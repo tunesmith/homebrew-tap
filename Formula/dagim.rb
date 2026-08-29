@@ -1,8 +1,8 @@
 class Dagim < Formula
   desc "Terminal editor for small, single-file DAGs"
   homepage "https://github.com/tunesmith/dagim"
-  url "https://github.com/tunesmith/dagim/archive/refs/tags/v1.3.1.tar.gz"
-  sha256 "92726b03c470e8749a63f68b809a4815c6ed81781729cbfb50e0151755c6dfc8"
+  url "https://github.com/tunesmith/dagim/archive/refs/tags/v1.4.0.tar.gz"
+  sha256 "39ab0dca11eb5ef6a84db645e2b06bd020d645c72217365a7c28209fd02a7b15"
   license "GPL-3.0-or-later"
 
   depends_on "go" => :build
@@ -25,7 +25,8 @@ class Dagim < Formula
     assert_match "OK", shell_output("#{bin}/dagim --check example.dagim")
 
     ready = shell_output("#{bin}/dagim ready example.dagim --json")
-    assert_match '"schema_version": 1', ready
+    assert_match '"schema_version": 2', ready
+    assert_match '"ok": true', ready
     assert_match '"id": "first"', ready
 
     system bin/"dagim", "complete", "example.dagim", "first"
