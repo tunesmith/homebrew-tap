@@ -1,8 +1,8 @@
 class Cludia < Formula
   desc "Local, file-first workbench for explicit arguments"
   homepage "https://github.com/tunesmith/cludia"
-  url "https://github.com/tunesmith/cludia/archive/refs/tags/v1.0.0.tar.gz"
-  sha256 "1cdc1aa5bb498714bfabb36df46f25a7caad7966016899a85424099e0a6c1e05"
+  url "https://github.com/tunesmith/cludia/archive/refs/tags/v1.0.1.tar.gz"
+  sha256 "0d93482453fbb65375c879ddf6a0d065c8b1f63f67031ebe229c460009a2b931"
   license "GPL-3.0-or-later"
 
   depends_on "go" => :build
