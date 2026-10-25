@@ -1,8 +1,8 @@
 class Dagim < Formula
   desc "Terminal editor for small, single-file DAGs"
   homepage "https://github.com/tunesmith/dagim"
-  url "https://github.com/tunesmith/dagim/archive/refs/tags/v1.4.0.tar.gz"
-  sha256 "39ab0dca11eb5ef6a84db645e2b06bd020d645c72217365a7c28209fd02a7b15"
+  url "https://github.com/tunesmith/dagim/archive/refs/tags/v1.5.0.tar.gz"
+  sha256 "abfe1d95d8c8c53d49771ee7c2712185560bc76335bd0af065f8d9fead50aa65"
   license "GPL-3.0-or-later"
 
   depends_on "go" => :build
@@ -31,5 +31,15 @@ class Dagim < Formula
 
     system bin/"dagim", "complete", "example.dagim", "first"
     assert_match '"complete": true', shell_output("#{bin}/dagim show example.dagim first --json")
+
+    assert_match '"id": "preserve_stable_ids"', shell_output("#{bin}/dagim guidance --json")
+
+    (testpath/"other").write "node first: Another independent task\n"
+    system bin/"dagim", "collection", "create", "daily"
+    system bin/"dagim", "collection", "add", "daily", "example.dagim", "--as", "example"
+    system bin/"dagim", "collection", "add", "daily", "other", "--as", "other"
+    assert_match '"ref": "other:first"', shell_output("#{bin}/dagim ready daily --json")
+    system bin/"dagim", "complete", "daily", "other:first"
+    assert_match '"complete": true', shell_output("#{bin}/dagim show other first --json")
   end
 end
