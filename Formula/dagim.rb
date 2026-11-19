@@ -1,8 +1,8 @@
 class Dagim < Formula
   desc "Terminal editor for small, single-file DAGs"
   homepage "https://github.com/tunesmith/dagim"
-  url "https://github.com/tunesmith/dagim/archive/refs/tags/v1.6.0.tar.gz"
-  sha256 "8a18b54b324e9e6a26a140ce50ebb580359a162c7bd3ce8e5dcbd16d0b92bb2a"
+  url "https://github.com/tunesmith/dagim/archive/refs/tags/v1.6.1.tar.gz"
+  sha256 "b4ddcb053037d51b1375e924546baa7bf0f3aed9a116ee99100deb54a9129154"
   license "GPL-3.0-or-later"
 
   depends_on "go" => :build
